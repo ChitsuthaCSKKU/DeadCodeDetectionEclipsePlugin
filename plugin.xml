@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="org.test.commands.category"
+            name="Category">
+      </category>
+      <command
+            categoryId="org.test.commands.category"
+            id="org.test.commands.DetectDeadVariableCommand">
+      </command>
+      <command
+            categoryId="org.test.commands.category"
+            id="org.test.commands.DetectDeadParameterCommand">
+      </command>
+      <command
+            categoryId="org.test.commands.category"
+            id="org.test.commands.DetectDeadClassInterfaceCommand">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.test.handlers.DeadVariableHandler"
+            commandId="org.test.commands.DetectDeadVariableCommand">
+      </handler>
+      <handler
+            class="org.test.handlers.DeadParameterHandler"
+            commandId="org.test.commands.DetectDeadParameterCommand">
+      </handler>
+      <handler
+            class="org.test.handlers.DeadClassInterfaceHandler"
+            commandId="org.test.commands.DetectDeadClassInterfaceCommand">
+      </handler>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
+            <menu 
+            	id="org.test.menus.sampleMenu"
+            	label="DeadCodeDetection">
+            		<command
+		              id="org.test.commands.DetectDeadClassInterface"
+		              commandId="org.test.commands.DetectDeadClassInterfaceCommand"
+		              label="Detect dead class/interface">
+            		</command>
+            		<command
+		              id="org.test.commands.DetectDeadVariable"
+		              commandId="org.test.commands.DetectDeadVariableCommand"
+		              label="Detect dead variable">
+            		</command>
+            		<command
+		              id="org.test.commands.DetectDeadParameter"
+		              commandId="org.test.commands.DetectDeadParameterCommand"
+		              label="Detect dead parameter">
+            		</command>
+            </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>
